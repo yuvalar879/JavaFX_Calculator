@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="345.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calc.test.view.CalculatorController">
+   <children>
+      <Button fx:id="b0" layoutX="19.0" layoutY="313.0" mnemonicParsing="false" onAction="#HandleDigit" prefHeight="23.0" prefWidth="79.0" text="0" />
+      <Button fx:id="bpoint" layoutX="121.0" layoutY="313.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="25.0" text="." />
+      <Button fx:id="plus" layoutX="176.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleOperation" prefHeight="23.0" prefWidth="21.0" text="+" />
+      <Button fx:id="Displayans" layoutX="172.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleEqualOperation" prefHeight="68.0" prefWidth="65.0" text="=">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="b1" layoutX="23.0" layoutY="275.0" mnemonicParsing="false" onAction="#HandleDigit" prefHeight="23.0" prefWidth="35.0" text="1" />
+      <Button fx:id="b2" layoutX="71.0" layoutY="275.0" mnemonicParsing="false" onAction="#HandleDigit" prefHeight="23.0" prefWidth="35.0" text="2" />
+      <Button fx:id="b3" layoutX="116.0" layoutY="275.0" mnemonicParsing="false" onAction="#HandleDigit" prefHeight="23.0" prefWidth="35.0" text="3" />
+      <Button fx:id="b4" layoutX="23.0" layoutY="236.0" mnemonicParsing="false" onAction="#HandleDigit" prefHeight="23.0" prefWidth="35.0" text="4" />
+      <Button fx:id="b5" layoutX="71.0" layoutY="236.0" mnemonicParsing="false" onAction="#HandleDigit" prefHeight="23.0" prefWidth="35.0" text="5" />
+      <Button fx:id="b6" layoutX="114.0" layoutY="236.0" mnemonicParsing="false" onAction="#HandleDigit" prefHeight="23.0" prefWidth="35.0" text="6" />
+      <Button fx:id="b9" layoutX="114.0" layoutY="197.0" mnemonicParsing="false" onAction="#HandleDigit" prefHeight="23.0" prefWidth="35.0" text="9" />
+      <Button fx:id="b8" layoutX="71.0" layoutY="197.0" mnemonicParsing="false" onAction="#HandleDigit" prefHeight="23.0" prefWidth="35.0" text="8" />
+      <Button fx:id="b7" layoutX="23.0" layoutY="197.0" mnemonicParsing="false" onAction="#HandleDigit" prefHeight="23.0" prefWidth="35.0" text="7" />
+      <Button fx:id="del" layoutX="20.0" layoutY="149.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" text=" ←" textFill="#282828" />
+      <Button fx:id="C" layoutX="112.0" layoutY="149.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="35.0" text="C" />
+      <Button fx:id="Minus" layoutX="176.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleOperation" prefHeight="23.0" prefWidth="25.0" text="-" />
+      <Button fx:id="multiply" layoutX="205.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleOperation" text="*" />
+      <Button fx:id="slash" layoutX="206.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleOperation" text="/" />
+      <Button fx:id="sqrt" layoutX="204.0" layoutY="184.0" mnemonicParsing="false" onAction="#sqrt" prefHeight="23.0" prefWidth="25.0" text="√" />
+      <Button fx:id="invSign" layoutX="159.0" layoutY="149.0" mnemonicParsing="false" onAction="#Invert" prefHeight="23.0" prefWidth="35.0" text="+/-" />
+      <TextArea fx:id="t1" editable="false" layoutX="21.0" layoutY="12.0" opacity="0.52" prefHeight="76.0" prefWidth="210.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextArea>
+      <TextField fx:id="t2" editable="false" layoutX="21.0" layoutY="88.0" prefHeight="23.0" prefWidth="210.0" text="Ans                                         ">
+         <effect>
+            <SepiaTone />
+         </effect></TextField>
+   </children>
+</AnchorPane>
