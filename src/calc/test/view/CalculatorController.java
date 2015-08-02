@@ -40,19 +40,15 @@ public class CalculatorController {
 	@FXML
 	private Button bpoint;
 
-	private static double ans = 0;
+	private double ans = 0;
 
-	private String currentOperation = "=";
-
-	private int x;
+	private String currentOperation = "";
 
 	private MainApp mainApp;
 
 	Calculator cal = new Calculator();
-	
-	
+
 	//// Sometimes you have to click twice on the equal button
-	
 
 	public CalculatorController() {
 
@@ -77,15 +73,14 @@ public class CalculatorController {
 
 			}
 		});
-		
+
 		bpoint.setOnAction((event -> {
 			t1.appendText(".");
-			
+
 		}));
 
 		// ///Can also be done this way
-		String css = MainApp.class.getResource("view/Design.css")
-				.toExternalForm();
+		String css = MainApp.class.getResource("view/Design.css").toExternalForm();
 		b1.getStylesheets().add(css);
 
 		t2.setStyle("-fx-focus-color: transparent;");
@@ -102,8 +97,8 @@ public class CalculatorController {
 	private void Invert() {
 		try {
 			String y = t1.getText();
-			x = Integer.parseInt(y) * -1;
-			y = Integer.toString(x);
+			double x = Double.parseDouble(y) * -1;
+			y = Double.toString(x);
 			t1.setText(y);
 		} catch (Exception e) {
 
@@ -112,30 +107,23 @@ public class CalculatorController {
 
 	@FXML
 	private void handleEqualOperation(ActionEvent event) {
-		
-		double newNumber = 0;
-		
-		try {
-		 newNumber = Double.parseDouble(t1.getText());
-		
-		} catch (Exception e) {
-			t1.setText("An error has occured");
-		}
+
 		switch (currentOperation) {
 		case "+":
-			ans += newNumber;
+			t1.setText(Double.toString(ans += Double.parseDouble(t1.getText())));
 			break;
 		case "-":
-			ans -= newNumber;
+			t1.setText(Double.toString(ans -= Double.parseDouble(t1.getText())));
 			break;
 		case "*":
-			ans *= newNumber;
+			t1.setText(Double.toString(ans *= Double.parseDouble(t1.getText())));
 			break;
 		case "/":
-			ans /= newNumber;
+			t1.setText(Double.toString(ans /= Double.parseDouble(t1.getText())));
+			break;
 		case "=":
 			try {
-			ans = Double.parseDouble(t1.getText());
+				ans = Double.parseDouble(t1.getText());
 			} catch (Exception e) {
 				t1.setText("An error has occured");
 			}
@@ -149,6 +137,7 @@ public class CalculatorController {
 
 	@FXML
 	private void handleOperation(ActionEvent event) {
+
 		ans = Double.parseDouble(t1.getText());
 		t1.setText("");
 		currentOperation = ((Button) event.getSource()).getText();
@@ -157,8 +146,9 @@ public class CalculatorController {
 	@FXML
 	private void sqrt() {
 		double temp = ans;
-		 temp = Math.sqrt(ans);
+		temp = Math.sqrt(ans);
 		t2.setText("Ans " + "            " + temp);
+		t1.setText(Double.toString(temp));
 	}
 
 	public void setMainApp(MainApp mainApp) {
