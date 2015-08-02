@@ -40,17 +40,19 @@ public class CalculatorController {
 	@FXML
 	private Button bpoint;
 
-	private String setCSS;
+	private static double ans = 0;
 
-	private static Integer ans = 0;
-
-	private String currentOperation;
+	private String currentOperation = "=";
 
 	private int x;
 
 	private MainApp mainApp;
 
 	Calculator cal = new Calculator();
+	
+	
+	//// Sometimes you have to click twice on the equal button
+	
 
 	public CalculatorController() {
 
@@ -62,6 +64,8 @@ public class CalculatorController {
 		C.setOnAction((event) -> {
 			t1.setText(cal.Clear());
 			t2.setText("Ans");
+			ans = 0;
+			currentOperation = "=";
 		});
 
 		del.setOnAction((event) -> {
@@ -73,6 +77,11 @@ public class CalculatorController {
 
 			}
 		});
+		
+		bpoint.setOnAction((event -> {
+			t1.appendText(".");
+			
+		}));
 
 		// ///Can also be done this way
 		String css = MainApp.class.getResource("view/Design.css")
@@ -103,7 +112,15 @@ public class CalculatorController {
 
 	@FXML
 	private void handleEqualOperation(ActionEvent event) {
-		int newNumber = Integer.parseInt(t1.getText());
+		
+		double newNumber = 0;
+		
+		try {
+		 newNumber = Double.parseDouble(t1.getText());
+		
+		} catch (Exception e) {
+			t1.setText("An error has occured");
+		}
 		switch (currentOperation) {
 		case "+":
 			ans += newNumber;
@@ -116,6 +133,13 @@ public class CalculatorController {
 			break;
 		case "/":
 			ans /= newNumber;
+		case "=":
+			try {
+			ans = Double.parseDouble(t1.getText());
+			} catch (Exception e) {
+				t1.setText("An error has occured");
+			}
+			break;
 		default:
 			break;
 		}
@@ -125,15 +149,15 @@ public class CalculatorController {
 
 	@FXML
 	private void handleOperation(ActionEvent event) {
-		ans = Integer.parseInt(t1.getText());
+		ans = Double.parseDouble(t1.getText());
 		t1.setText("");
 		currentOperation = ((Button) event.getSource()).getText();
 	}
 
 	@FXML
 	private void sqrt() {
-		double temp = (double) ans;
-		temp = Math.sqrt(temp);
+		double temp = ans;
+		 temp = Math.sqrt(ans);
 		t2.setText("Ans " + "            " + temp);
 	}
 
